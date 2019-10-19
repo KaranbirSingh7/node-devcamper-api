@@ -1,7 +1,9 @@
 // @desc     Get all bootcamps
 // @route   GET /api/v1/bootcamps
 // @access  Public
-exports.getBootcamps = (req, res, next) => {};
+exports.getBootcamps = (req, res, next) => {
+  res.send('GET');
+};
 
 // @desc     Get single bootcamp
 // @route   GET /api/v1/bootcamps/:id
