@@ -2,6 +2,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
+const colors = require('colors');
 
 // LOCAL IMPORTS
 const bootcamps = require('./routes/bootcamps');
@@ -27,12 +28,14 @@ app.use('/api/v1/bootcamps', bootcamps);
 // START server
 const server = app.listen(
   PORT,
-  console.log(`Server running in ${process.env.NODE_ENV} on ${PORT}`)
+  console.log(
+    `Server running in ${process.env.NODE_ENV} on ${PORT}`.yellow.bold
+  )
 );
 
 // Handle unhandled rejections
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message} `);
+  console.log(`Error: ${err.message}`.red);
   // Close server with exit
   server.close(() => process.exit(1));
 });
