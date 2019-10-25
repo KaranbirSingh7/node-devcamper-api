@@ -6,6 +6,7 @@ const colors = require('colors');
 
 // LOCAL IMPORTS
 const bootcamps = require('./routes/bootcamps');
+const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 
 dotenv.config({ path: './config/config.env' });
@@ -28,7 +29,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // MOUNT ROUTES
 app.use('/api/v1/bootcamps', bootcamps);
-
+app.use(errorHandler);
 // START server
 const server = app.listen(
   PORT,
